@@ -10,11 +10,11 @@ public class ScoreArray12{
             System.out.print("Enter the score for student #" + (i + 1) + ": ");
             finalScores[i] = input.nextInt();
         }
-        for (int i = 0; i < finalScores.length; i++) {
-            if (finalScores[i] > 70) {
-                String status = "PASS";
-                System.out.println("Student #" + (i + 1) + ": " + finalScores[i] + " (" + status + ")");
-            }
+        int number = 1;
+        for (int score : finalScores) {
+            String status = (score > 70) ? "PASS" : "FAIL";
+            System.out.println("Student #" + number + ": " + score + " (" + status + ")");
+            number++;
         }
         input.close();
     }
