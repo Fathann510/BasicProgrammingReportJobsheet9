@@ -266,167 +266,96 @@ public class ScoreArray12{
 
 This experiment continues the SIAKAD case study to produce a summary of student scores, as commonly shown in an end-of-semester score recap.
 
-#### 3.2.1 Program Code Java
+#### 3.3.1 Program Code Java
 ```java
-import java.util.Scanner;
-
-public class CafeDoWHile12 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        int coffee, tea, bread, totalPrice, coffePrice = 12000, teaPrice = 7000, breadPrice = 20000;
-        String customerName;
-
-        do{
-            System.out.print("Enter customer name(type 'cancel' to exit): ");
-            customerName = sc.nextLine();
-            if(customerName.equalsIgnoreCase("cancel")){
-                System.out.println("Transaction canceled.");
-                break;
-            }
-        
-            System.out.print("Coffe Quantity: ");
-            coffee = sc.nextInt();
-            System.out.print("Tea Quantity: ");
-            tea = sc.nextInt();
-            System.out.print("Bread Quantity: ");
-            bread = sc.nextInt();
-            totalPrice = (coffee * coffePrice) + (tea * teaPrice) + (bread * breadPrice);
-            System.out.println("Total Amount: Rp. " + totalPrice);
-            sc.nextLine();
-        }while(true);
-        System.out.println("All transactions completed.");
-        
-        sc.close();
-    }    
-}
 
 ```
 
-#### 2.3.2 Execution Result / Screenshot Output
+#### 3.3.2 Execution Result / Screenshot Output
 The following is an example of the *output* display after the program is run.:
-![Experiment2Result](/Experiment2Result.png)
+![]()
 
-#### 2.2.3 Answers to Questions / Reflection Questions
-* **Question 1:** In this DO-WHILE loop, if the first customer name entered is “cancel”, how many times is the loop executed?
-  * **Answer:** 1 time. The body runs first, and the condition is checked afterward. So even if the very first input is “cancel”, the loop body still starts once.
-* **Question 2:** State the stopping condition used in this DO-WHILE loop!
+#### 3.3.3 Answers to Questions / Reflection Questions
+* **Question 1:**
+  * **Answer:** 
+* **Question 2:** 
   * **Answer:**
-  ```java
-  customerName.equalsIgnoreCase("cancel")
-  ``` 
-  The loop stops when the cashier types cancel as the customer name. equalsIgnoreCase ignores letter case, so cancel, CANCEL, and Cancel all work. The loop runs repeatedly for each customer and terminates when the input customerName equals “cancel” (case-insensitive), which triggers break.
-* **Question 3:** What is the function of using the value true in the DO-WHILE condition?
-  * **Answer:** Using true as the condition creates an infinite loop. Since true is always true, the condition never becomes false, so the loop never ends by itself and always repeats for the next customer. The loop is terminated manually through break when the sentinel value “cancel” is entered.
-* **Question 4:** Why does this DO-WHILE loop still run even though it has no initialization and update
-components?
-  * **Answer:** A DO-WHILE loop does not need initialization and update components because it is controlled by a condition rather than a counter. In this program, the loop repeats through while(true) and ends through break when the sentinel value “cancel” is entered.
+* **Question 3:** 
+* **Question 4:** 
+  * **Answer:** 
 ---
 
-## 3: ASSIGNMENT
+### 3.4 Experiment 4: Simple Searching and Sorting
 
-The following is a list of tasks to be performed in this Jobsheet:
+This experiment applies simple searching and sorting algorithms to student score data — two fundamental skills that are widely used in real-world data processing.
 
-- [x] **Task 1:** In this section, students are required to apply a *WHILE loop* with *Multiple IF-ELSE (IF-ELSE IF)* conditions to process the ticket sales of several customers at a cinema. For each customer, the program reads the ticket quantity, rejects negative values and asks for re-entry, then applies the discount rules (10% for more than 4 tickets, 15% for more than 10 tickets) to the ticket price of Rp 50,000. The program accumulates the total number of tickets sold and the total revenue for the day.
-- [x] **Task 2:** In this section, students are required to apply a *WHILE loop* and *IF-ELSE* conditions to process the parking fees of several vehicles. For each vehicle, the program reads the parking duration and the vehicle type, then calculates the fee using the rate of Rp 3,000 per hour for cars or Rp 2,000 per hour for motorcycles. The loop continues as long as the input is not 0, and the program then displays the total parking fees collected, following the flowchart provided.
-
-### 3.1 Implementation Task Code
-
-#### Task 1:  Total Daily Cinema Ticket Sales
-#### 3.1.1 Program Code Java
+#### 3.4.1.1 Program Code Java (Part A - Linear Search)
 ```java
-import java.util.Scanner;
 
-public class Assignment112 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        int ticketQuantity, ticketPrice = 50000, totalTickets = 0;
-        
-        while(true) {
-            System.out.print("Enter ticket quantity: ");
-            ticketQuantity = sc.nextInt();
-            if(ticketQuantity == 0){
-                break;
-            }
-            if(ticketQuantity < 0 ){
-                System.out.println("Invalid ticket quantity! Please enter the quantity again.");
-                continue;
-            }
-        totalTickets += ticketQuantity;
-        int subtotal = ticketQuantity * ticketPrice;
-        double discountRate = 0;
-        
-            if(ticketQuantity > 10){
-                discountRate = 0.15;
-            }else if(ticketQuantity > 4){
-                discountRate = 0.10;
-            }
-        double discount = subtotal * discountRate;
-        double totalPayment = subtotal - discount;
-
-        System.out.println("Subtotal: Rp. " + subtotal);
-        System.out.println("Discount: Rp. " + discount);
-        System.out.println("Total payment: Rp. " + totalPayment);
-
-        }
-        System.out.println("--- Daily Sales Report ---");
-        System.out.println("Total tickets sold: " +totalTickets);
-        System.out.println("Total ticket revenue: Rp. " + (totalTickets * ticketPrice));
-
-        sc.close();
-    }
-}
 ```
-#### 3.1.2 Execution Result / Screenshot Output
-![Task1Result](/Task1Result.png)
-
-#### Task 2: Parking Lot Fee Calculation
-
-#### 3.2.1 Program Code Java
+#### 3.4.1.2 Program Code Java (Part B - Bubble Sort)
 ```java
-import java.util.Scanner;
 
-public class ParkingDoWhile12 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        int type, duration;
-        int total = 0; 
-        
-        do {
-            System.out.println("Vehicle Type (1 = Car, 2 = Motorcycle, 0 = Exit)");
-            System.out.print("Enter vehicle type: ");
-            type = sc.nextInt();
-
-            if (type == 1 || type == 2) {
-                System.out.print("Enter parking duration (hours): ");
-                duration = sc.nextInt();
-
-                if (type == 1) {
-                    total += duration * 3000;
-                } else {
-                    total += duration * 2000;
-                }
-            }
-        } while (type != 0);
-
-        System.out.println("Total parking fees: Rp " + total);
-
-        sc.close();
-    }
-}
 ```
 
-#### 3.1.2 Execution Result / Screenshot Output
-![Task2Result](/Task2Result.png)
 
+#### 3.4.2 Execution Result / Screenshot Output
+The following is an example of the *output* display after the program is run.:
+
+![]()
+
+#### 3.4.3 Answers to Questions / Reflection Questions
+* **Question 1:**
+  * **Answer:** 
+* **Question 2:** 
+  * **Answer:**
+* **Question 3:** 
+  * **Answer:**
+* **Question 4:** 
+  * **Answer:** 
+* **Question 5:** 
+  * **Answer:** 
 ---
 
-## 4: CONCLUSION
+## 4: ASSIGNMENT
 
-In this jobsheet, students learned and practiced the three loop structures in Java through four case studies. The **FOR loop** is used when the number of repetitions is known in advance, as in finding the highest and lowest quiz scores of 10 students, where the loop counter controls the repetition. The **WHILE loop** is used when the loop depends on a condition that is checked before each iteration, as in the SIAKAD letter grade program, where `continue` and the placement of `i++` at the end of the loop ensure an invalid score is ignored and the same student is asked again. The **DO-WHILE loop** is used when the loop body must run at least once, as in the café transaction program, where `while (true)` combined with `break` stops the loop when the sentinel value "cancel" is entered.
+### 4.1 Assignment 1: Managing Student Scores
+Write a program that can store and manage student scores (integers). The program must provide features to:
+• Enter the number of student scores to be input.
+• Enter each student score one by one.
+• Calculate the average of all of the scores entered.
+• Display the highest and lowest scores.
+• Display all of the scores entered, along with their pass/fail status (PASS / FAIL)
 
-Students also learned that loops work together with selection statements (IF, IF-ELSE IF, and nested IF) to validate input, classify data, and apply business rules such as discounts and parking rates. The `break` and `continue` statements give extra control over the flow of a loop. In the assignments, students implemented the cinema ticket sales case and the parking fee flowchart as Java programs, which shows that a flowchart can be translated directly into a working loop-based program.
+### 4.1.1 Program Code Java
+```java
 
-Overall, choosing the right loop depends on the problem: **FOR** for a fixed number of repetitions, **WHILE** for condition-based repetition that may run zero times, and **DO-WHILE** for repetition that must run at least once. Understanding the components of each loop (initialization, condition, update, and loop body) is the key to avoiding errors such as infinite loops and wrong results.
+```
+
+#### 4.1.2 Execution Result / Screenshot Output
+![]()
+
+### 4.2 Assignment 2: Campus Café Ordering Application
+Write a program that can manage food and beverage orders at a campus café. The program provides a predefined menu list, allows users to select menu items through a search feature, records orders, and calculates the total cost.
+Café menu list (initialize an array of String at declaration):
+```java
+String[] menu = {"Fried Rice", "Fried Noodles", "Toast", "French Fries", "Pulled Tea", "Cappuccino", "Chocolate Ice"};
+int[] prices = {15000, 13000, 10000, 12000, 8000, 18000, 20000};
+```
+The program you write must meet the following requirements:
+• Menu search feature: the user enters the name of the food or beverage they want to order, and the program searches for that name in the menu array using the linear search algorithm. If it is found, display its price; if it is not found, inform the user that the menu item is not available.
+• Ordering feature: the user enters the number of items to order, then for each item selects a menu name (which must be validated to ensure it exists in the menu list). Store the names of the ordered items in a one-dimensional array that is separate from the main menu array.
+• Calculate and display the total cost of all of the orders entered by the user.
+• Display the list of orders that have been made, along with the total cost, in a neat and easy-to-read format.
+
+### 4.2.1 Program Code Java
+```java
+
+```
+
+#### 4.2.2 Execution Result / Screenshot Output
+![]()
+
+--- 
+
+## 5: CONCLUSION
