@@ -11,8 +11,10 @@ public class ScoreArray12{
             finalScores[i] = input.nextInt();
         }
         for (int i = 0; i < finalScores.length; i++) {
-            String status = (finalScores[i] > 70) ? "PASS" : "FAIL";
-            System.out.println("Student #" + (i + 1) + ": " + finalScores[i] + " (" + status + ")");
+            if (finalScores[i] > 70) {
+                String status = "PASS";
+                System.out.println("Student #" + (i + 1) + ": " + finalScores[i] + " (" + status + ")");
+            }
         }
         input.close();
     }
